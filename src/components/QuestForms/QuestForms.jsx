@@ -5,15 +5,15 @@ export function QuestForms(props) {
 
     const [input, setInput] = useState(props.edit ? props.edit.value : '');
 
-    const inputRef = useRef(null)
+    const inputRef = useRef(null);
 
     useEffect(() => {
         inputRef.current.focus()
-    })
+    });
 
     const handleChangeInput = e => {
         setInput(e.target.value);
-    }
+    };
 
     const handleSubmit = e => {
         e.preventDefault();

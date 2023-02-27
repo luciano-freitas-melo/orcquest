@@ -1,28 +1,29 @@
 import { useState } from "react"
 import { QuestForms } from "../QuestForms/QuestForms";
 import { QuestItem } from "../QuestItem/QuestItem";
+import addQuest from "../../../database";
 
 export function QuestList() {
 
     const [quests, setQuests] = useState([]);
 
-    const addQuest = quest => {
-        if (!quest.text || /^\s*$/.test(quest.text)) {
-            return
+    const addNewQuest = async (quest) => {
+        try {
+            
+            const response = await addQuest(quest);
+            console.log(response);
+            setQuests(response);
+
+        } catch (error) {
         }
-
-        const newQuests = [quest, ...quests];
-
-        setQuests(newQuests);
-
     };
 
     const updateQuest = (questId, newValue) => {
         if (!newValue.text || /^\s*$/.test(newValue.text)) {
-            return
+            return;
         }
 
-        setQuests(prev => prev.map(item => (item.id === questId ? newValue : item)))
+        setQuests(prev => prev.map(item => (item.id === questId ? newValue : item)));
 
     };
 
@@ -46,7 +47,7 @@ export function QuestList() {
     return (
         <>
             <h1>Orc'Quest</h1>
-            <QuestForms onSubmit = {addQuest}/>
+            <QuestForms onSubmit = {addNewQuest}/>
             <QuestItem
                 quests = {quests}   
                 completeQuest = {completeQuest}
