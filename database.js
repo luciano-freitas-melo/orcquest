@@ -15,16 +15,18 @@ export const addQuest = (description) => {
             reject(new Error("Não há descrição da quest"))
         }
 
-        const quest = {
-            id: id++,
-            name: description,
-            done: false
+        else{
+            const quest = {
+                id: id++,
+                name: description,
+                done: false
+            }
+            console.log(quest)
+            
+            quests.push(quest)
+            
+            resolve(quests)
         }
-        console.log(quest)
-
-        quests.push(quest)
-
-        resolve(quests)
 
     })
 }
