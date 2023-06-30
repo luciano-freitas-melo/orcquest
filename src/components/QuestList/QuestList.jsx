@@ -6,13 +6,17 @@ import styled from "styled-components";
 const QuestListContainer = styled.div`
     width: 40%;
     height: 90%;
-    background: #161a2b;
+    background: #9567E0;
     border-radius: 10px;
     
     display: flex;
     flex-direction: column;
     justify-content: start;
     text-align: center;
+
+    h1 {
+        font-size: 2em;
+    }
 `
 
 export const QuestList = () => {
