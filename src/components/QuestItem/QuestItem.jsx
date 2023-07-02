@@ -1,48 +1,31 @@
 import { Pencil, XCircle } from "phosphor-react";
-import { useState } from "react"
-import { QuestForms } from "../QuestForms/QuestForms";
+import styled from "styled-components";
 
+const QuestItemContainer = styled.div`
+    margin: 0.25em;
+    padding: 0 1em;
 
-export function QuestItem( {quests, completeQuest, removeQuest, updateQuest }) {
+    border: 2px solid #5d0cff;
 
-    const [edit, setEdit] = useState({
-        id: null,
-        value: ''
-    });
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
-    const submitUpdate = value => {
-        updateQuest(edit.id, value);
-        setEdit({
-            id: null,
-            value: ''
-        });
-    };
+    h2{
+        color: #fff;
+    }
+`
 
-    if (edit.id) {
-        return <QuestForms edit={edit} onSubmit={submitUpdate} />;
-    };
+export function QuestItem({questName}) {
 
-    return quests.map((quest, index) => (
-
-        <div
-            className={quest.isComplete ? 'questRow complete' : 'questRow'}
-            key={index}
-        >
-
-            <div key={quest.id} onClick={() => completeQuest(quest.id)}>
-                {quest.text}
+    return (
+        <QuestItemContainer>
+            <input type="checkbox" />
+            <h2>{questName}</h2>
+            <div>
+                <Pencil size={24} />
+                <XCircle size={24} />
             </div>
-
-            <div className="icons">
-                <XCircle size={32}
-                    onClick={() => removeQuest(quest.id)}
-                    className="deleteIcon"
-                />
-                <Pencil size={32}
-                    onClick={() => setEdit({ id: quest, value: quest.text })}
-                    className="editIcon"
-                />
-            </div>
-        </div>
-    ));
+        </QuestItemContainer>
+    );
 };

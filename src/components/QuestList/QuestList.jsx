@@ -1,7 +1,8 @@
-import { useState } from "react"
-import { QuestForms } from "../QuestForms/QuestForms";
-import { QuestItem } from "../QuestItem/QuestItem";
 import styled from "styled-components";
+
+import { QuestForms } from "../QuestForms/QuestForms";
+import { quests } from "../../../database";
+import { QuestItem } from "../QuestItem/QuestItem";
 
 const QuestListContainer = styled.div`
     width: 40%;
@@ -25,12 +26,10 @@ export const QuestList = () => {
         <QuestListContainer>
             <h1>Orc'Quest</h1>
             <QuestForms />
-            {/* <QuestItem
-                quests={quests}
-                completeQuest={completeQuest}
-                removeQuest={removeQuest}
-                updateQuest={updateQuest}
-            /> */}
+            {quests.map((quest) => (
+                <QuestItem key={quest.id} questName={quest.name} />
+            ))}
+
         </QuestListContainer>
     );
 }

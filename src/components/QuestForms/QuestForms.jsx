@@ -1,6 +1,5 @@
-// import { useEffect, useRef, useState } from "react";
-// import { addQuest } from "../../../database";
 import styled from "styled-components"
+import { useState } from "react"
 
 const QuestInputContainer = styled.form`
 
@@ -35,42 +34,20 @@ const QuestInput = styled.input`
 
 export const QuestForms = () => {
 
-    // const [input, setInput] = useState('');
-
-    // const inputRef = useRef(null);
-
-    // useEffect(() => {
-    //     inputRef.current.focus()
-    // });
-
-    // const addNewQuest = async (quest) => {
-    //     try {
-    //         const response = await addQuest(quest);
-    //         console.log(response);
-
-    //     } catch (error) {
-    //         alert(error);
-    //     }
-    // };
-
-    // const handleChangeInput = e => {
-    //     setInput(e.target.value);
-    // };
-
-    // const handleSubmit = e => {
-    //     e.preventDefault();
-    //     addNewQuest(input);
-    //     setInput('');
-    // };
+    const [newQuest, setNewQuest] = useState('');
+    
+    // const handleAddQuest = (event) => {
+    //     event.preventDefault();
+        
+    //     addQuest(newQuest);
+    // }
 
     return (
         <QuestInputContainer>
 
             <QuestInput
-                type="text"
                 placeholder="Nova Quest"
-                name='text'
-                className="inputQuest"
+                onBlur={(event) => setNewQuest(event.target.value)}
             />
 
             <button>Adicionar</button>
