@@ -4,7 +4,7 @@ import { useState } from "react"
 const QuestInputContainer = styled.form`
 
     button{
-        padding: 16px;
+        padding: 1em ;
         border: none;
         border-radius: 0 4px 4px 0;
         cursor: pointer;
@@ -21,7 +21,7 @@ const QuestInput = styled.input`
     border-radius: 4px 0 0 4px;
     border: 2px solid #5d0cff;
     outline: none;
-    width: 320px;
+    width: 40vw;
     background: transparent;
 
     color: #fff;
