@@ -3,6 +3,8 @@ import { useState } from "react"
 
 const QuestInputContainer = styled.form`
 
+    margin-bottom: 2em;
+
     button{
         padding: 1em ;
         border: none;
