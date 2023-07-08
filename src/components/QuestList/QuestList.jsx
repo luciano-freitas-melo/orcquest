@@ -1,8 +1,8 @@
 import styled from "styled-components";
+import { useState, useEffect} from "react";
 
-import { QuestForms } from "../QuestForms/QuestForms";
-import { quests } from "../../../database";
 import { QuestItem } from "../QuestItem/QuestItem";
+import { getQuests } from "../../services/quests";
 
 const QuestListContainer = styled.div`
     width: 100%;          
@@ -12,6 +12,16 @@ const QuestListContainer = styled.div`
 `
 
 export const QuestList = () => {
+    const [quests, setQuests] = useState([])
+
+    useEffect(() => {
+        fetchQuests();
+    }, [])
+    
+    async function fetchQuests() {
+        const questsAPI = await getQuests();
+        setQuests(questsAPI);
+    }
 
     return (
         <QuestListContainer>
